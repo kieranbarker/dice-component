@@ -1,4 +1,4 @@
-class RollDice extends HTMLElement {
+export default class RollDice extends HTMLElement {
   static #dice = {
     d2: [1, 2],
     d4: [1, 2, 3, 4],
@@ -70,8 +70,4 @@ class RollDice extends HTMLElement {
     if (!btn) return;
     btn.removeEventListener("click", this.#handleClick);
   }
-}
-
-if ("customElements" in window) {
-  customElements.define("roll-dice", RollDice);
 }

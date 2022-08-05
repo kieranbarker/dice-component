@@ -7,7 +7,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        width: 88%;
+        max-width: 40em;
+        margin: 1em auto;
+        line-height: 1.5;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -17,6 +24,10 @@
       <roll-dice></roll-dice>
       <roll-dice size="d8">Roll a D8</roll-dice>
     </main>
-    <script src="RollDice.js"></script>
+    <script type="module">
+      import RollDice from "./RollDice.js";
+      if ("customElements" in window)
+        customElements.define("roll-dice", RollDice);
+    </script>
   </body>
 </html>
