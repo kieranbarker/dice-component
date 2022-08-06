@@ -1,15 +1,5 @@
 export default class RollDice extends HTMLElement {
-  static #dice = {
-    d2: [1, 2],
-    d4: [1, 2, 3, 4],
-    d6: [1, 2, 3, 4, 5, 6],
-    d8: [1, 2, 3, 4, 5, 6, 7, 8],
-    d10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    d12: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    d20: [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    ],
-  };
+  static #die = [1, 2, 3, 4, 5, 6];
 
   /**
    * Randomly shuffle an array.
@@ -36,15 +26,9 @@ export default class RollDice extends HTMLElement {
     return array;
   }
 
-  #die;
-
   constructor() {
     super();
-
-    const size = this.getAttribute("size");
     const btnText = this.textContent.trim();
-
-    this.#die = RollDice.#dice[size];
     this.innerHTML = /* html */ `
       <p><button type="button">${btnText || "Roll Dice"}</button></p>
       <div aria-live="polite"></div>
@@ -55,8 +39,8 @@ export default class RollDice extends HTMLElement {
     const liveRegion = this.querySelector("[aria-live]");
     if (!liveRegion) return;
 
-    const [roll] = RollDice.#shuffle(this.#die ?? RollDice.#dice.d6);
-    liveRegion.textContent = `You rolled: ${roll}`;
+    const [roll] = RollDice.#shuffle(RollDice.#die);
+    liveRegion.textContent = `You rolled a ${roll}`;
   };
 
   connectedCallback() {
