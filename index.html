@@ -26,8 +26,10 @@
     </main>
     <script type="module">
       import RollDice from "./RollDice.js";
-      if ("customElements" in window)
+
+      if ("customElements" in window) {
         customElements.define("roll-dice", RollDice);
+      }
     </script>
   </body>
 </html>
