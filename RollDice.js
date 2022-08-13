@@ -30,6 +30,22 @@ export default class RollDice extends HTMLElement {
     super();
     this.root = this.attachShadow({ mode: "closed" });
     this.root.innerHTML = /* html */ `
+      <style>
+        button {
+          padding: 0.5em 1em;
+          border: 1px solid var(--bg-color, #08c);
+          border-radius: var(--radius, 0.25em);
+          font-size: var(--size, 1.5em);
+          color: var(--color, #fff);
+          background-color: var(--bg-color, #08c);
+        }
+        [aria-live] {
+          font-size: var(--msg-size, 1.3125em);
+          font-style: var(--msg-style, normal);
+          font-weight: var(--msg-weight, normal);
+          color: var(--msg-color, inherit);
+        }
+      </style>
       <p><button type="button"><slot>Roll Dice</slot></button></p>
       <div aria-live="polite"></div>
     `;
